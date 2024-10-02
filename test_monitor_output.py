@@ -6,6 +6,12 @@ def generate_random_rating():
     return random.choice(values)
 
 
+#modelop.init
+def init(init_param):
+      pass
+
+
+#modelop.metrics
 def metrics():
     cat1=generate_random_rating()
     cat2=generate_random_rating()
