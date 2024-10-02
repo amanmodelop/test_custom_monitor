@@ -1,21 +1,27 @@
+
 import json
 import pandas as pd
-import modelop.utils as utils
-logger = utils.configure_logger()
-
+from pathlib import Path
 import random
+#import modelop.utils as utils
+
+
+#import modelop_sdk.restclient.moc_client as moc_client
 def generate_random_rating():
     values=["l","m","h"]
     return random.choice(values)
 
 
-#modelop.init
+# modelop.init
 def init(init_param):
-      logger = utils.configure_logger()
+    #logger = utils.configure_logger()
+    pass
 
 
 #modelop.metrics
-def metrics(data:pd.DataFrame):
+def metrics(data: pd.DataFrame):
+    print("Running the metrics function") 
+
     cat1=generate_random_rating()
     cat2=generate_random_rating()
     cat3=generate_random_rating()
@@ -32,17 +38,21 @@ def metrics(data:pd.DataFrame):
     "y_axis_label":"y-axis",
     "rotated":True, 
     "data":{"data":[1,2,1],
-    "categories":["abc","cde","def"]
-        }
-    }
-}
+    "categories":["abc","cde","def"]}
+    }}
     yield final_result
+    
 
 def main():
-    data_dict = {"data1":993,"data2":36,"data3":3959,"label_value":0,"score":1}
-    df = pd.DataFrame.from_dict([data_dict])
-    print(next(metrics(df)))
+    data = {"data1":993,"data2":36,"data3":3959,"label_value":0,"score":1}
+    df = pd.DataFrame.from_dict([data])
+    print(json.dumps(next(metrics(df)), indent=2))
 
 
 if __name__ == '__main__':
-	main()
+	main()        
+     
+
+
+
+
