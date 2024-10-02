@@ -1,5 +1,8 @@
 import json
 import pandas as pd
+import modelop.utils as utils
+logger = utils.configure_logger()
+
 import random
 def generate_random_rating():
     values=["l","m","h"]
@@ -8,11 +11,11 @@ def generate_random_rating():
 
 #modelop.init
 def init(init_param):
-      pass
+      logger = utils.configure_logger()
 
 
 #modelop.metrics
-def metrics():
+def metrics(data:pd.DataFrame):
     cat1=generate_random_rating()
     cat2=generate_random_rating()
     cat3=generate_random_rating()
@@ -33,22 +36,12 @@ def metrics():
         }
     }
 }
-    return final_result
+    yield final_result
 
 def main():
-	data = '''
-		{ "foo": 2.2,
-		  "bar": 1.3,
-		  "strvalue": "foo",
-		  "objectvalue": {
-		  	"val1": 0.8392,
-		  	"val2": 0.987
-		  }
-		}
-	'''
-	data_dict = json.loads(data)
-	df = pd.DataFrame.from_dict([data_dict])
-	print(next(metrics(df)))
+    data_dict = {"data1":993,"data2":36,"data3":3959,"label_value":0,"score":1}
+    df = pd.DataFrame.from_dict([data_dict])
+    print(next(metrics(df)))
 
 
 if __name__ == '__main__':
