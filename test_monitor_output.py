@@ -39,9 +39,9 @@ def metrics(data: pd.DataFrame):
     "x_axis_label":"X-axis",
     "y_axis_label":"y-axis",
     "rotated":True, 
-    "data":{"data":[map(cat1),map(cat2),map(cat3),map(cat4),map(cat5),map(cat6)],
-    "categories":["cat1","cat2","cat3","cat4","cat5","cat6"]}
-    }}
+    "data":{"data":[map(cat1),map(cat2),map(cat3),map(cat4),map(cat5),map(cat6)]},
+    "categories":["cat1","cat2","cat3","cat4","cat5","cat6"]
+    }
     yield final_result
     
 
