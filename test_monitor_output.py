@@ -1,4 +1,3 @@
-
 import json
 import pandas as pd
 from pathlib import Path
@@ -39,22 +38,10 @@ def metrics(data: pd.DataFrame):
     "x_axis_label":"X-axis",
     "y_axis_label":"y-axis",
     "rotated":True, 
-    "data":{"data":[map(cat1),map(cat2),map(cat3),map(cat4),map(cat5),map(cat6)]},
-    "categories":["cat1","cat2","cat3","cat4","cat5","cat6"]
+    "data":{
+        "risk_data":[map(cat1),map(cat2),map(cat3),map(cat4),map(cat5),map(cat6)]
+        },
+    "categories": ["cat1","cat2","cat3","cat4","cat5","cat6"]
+    }
     }
     yield final_result
-    
-
-def main():
-    data = {"data1":993,"data2":36,"data3":3959,"label_value":0,"score":1}
-    df = pd.DataFrame.from_dict([data])
-    print(json.dumps(next(metrics(df)), indent=2))
-
-
-if __name__ == '__main__':
-	main()        
-     
-
-
-
-
