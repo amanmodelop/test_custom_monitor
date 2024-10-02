@@ -18,7 +18,7 @@ def init(init_param):
     pass
 
 
-#modelop.metrics
+# modelop.metrics
 def metrics(data: pd.DataFrame):
     print("Running the metrics function") 
 
