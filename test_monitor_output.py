@@ -10,7 +10,10 @@ import random
 def generate_random_rating():
     values=["l","m","h"]
     return random.choice(values)
-
+def map(val):
+     map={"l":1,"m":2,"h":3}
+     return map[val]
+     
 
 # modelop.init
 def init(init_param):
@@ -28,7 +31,6 @@ def metrics(data: pd.DataFrame):
     cat4=generate_random_rating()
     cat5=generate_random_rating()
     cat6=generate_random_rating()
-
     final_result={
     "cat1":cat1,"cat2":cat3,"cat3":cat3,"cat4":cat4,"cat5":cat5,"cat6":cat6,
     "risk":[{"cat1":cat1}],"score":[{"cat2":cat2,"cat3":cat3,"cat4":cat4,"cat5":cat5,"cat6":cat6}],
@@ -37,8 +39,8 @@ def metrics(data: pd.DataFrame):
     "x_axis_label":"X-axis",
     "y_axis_label":"y-axis",
     "rotated":True, 
-    "data":{"data":[1,2,1],
-    "categories":["abc","cde","def"]}
+    "data":{"data":[map(cat1),map(cat2),map(cat3),map(cat4),map(cat5),map(cat6)],
+    "categories":["cat1","cat2","cat3","cat4","cat5","cat6"]}
     }}
     yield final_result
     
