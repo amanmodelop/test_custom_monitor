@@ -1,3 +1,4 @@
+
 import json
 import pandas as pd
 from pathlib import Path
@@ -7,12 +8,25 @@ import random
 
 #import modelop_sdk.restclient.moc_client as moc_client
 def generate_random_rating():
-    values=["l","m","h"]
+    values=["L","M","H"]
     return random.choice(values)
 def map(val):
-     map={"l":1,"m":2,"h":3}
+     map={"L":1,"M":2,"H":3}
      return map[val]
+
+def load_config(file):
+     with open(file,"r") as f:
+          return json.load(f)
      
+def final_rating(config):
+    scoring_table=config.get("scoring_table")
+    inherent_risk_rating=config.get("inherent_risk_rating")
+    random_combined_rating=scoring_table.get(generate_random_rating())
+    category=None
+    for lower,upper,level in inherent_risk_rating:
+         if lower<=random_combined_rating<=upper:
+              category=level
+              return category     
 
 # modelop.init
 def init(init_param):
@@ -23,25 +37,25 @@ def init(init_param):
 # modelop.metrics
 def metrics(data: pd.DataFrame):
     print("Running the metrics function") 
-
-    cat1=generate_random_rating()
-    cat2=generate_random_rating()
-    cat3=generate_random_rating()
-    cat4=generate_random_rating()
-    cat5=generate_random_rating()
-    cat6=generate_random_rating()
+    config=load_config("./tables.json")
+    cat1=final_rating(config)
+    cat2=final_rating(config)
+    cat3=final_rating(config)
+    cat4=final_rating(config)
+    cat5=final_rating(config)
+    cat6=final_rating(config)
     final_result={
     "cat1":cat1,"cat2":cat3,"cat3":cat3,"cat4":cat4,"cat5":cat5,"cat6":cat6,
-    "risk":[{"cat1":cat1}],"score":[{"cat2":cat2,"cat3":cat3,"cat4":cat4,"cat5":cat5,"cat6":cat6}],
-    "horizontal_bar_graph":{
-    "title":"title",
-    "x_axis_label":"X-axis",
-    "y_axis_label":"y-axis",
-    "rotated":True, 
-    "data":{
-        "risk_data":[map(cat1),map(cat2),map(cat3),map(cat4),map(cat5),map(cat6)]
-        },
-    "categories": ["cat1","cat2","cat3","cat4","cat5","cat6"]
-    }
+    "risk":[{"cat1":cat1}]
     }
     yield final_result
+    
+
+def main():
+    data = {"data1":993,"data2":36,"data3":3959,"label_value":0,"score":1}
+    df = pd.DataFrame.from_dict([data])
+    print(json.dumps(next(metrics(df)), indent=2))
+
+
+if __name__ == '__main__':
+	main()        
