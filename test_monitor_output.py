@@ -18,10 +18,10 @@ def load_config(file):
      with open(file,"r") as f:
           return json.load(f)
      
-def final_rating(config):
+def final_rating(config,field):
     scoring_table=config.get("scoring_table")
     inherent_risk_rating=config.get("inherent_risk_rating")
-    random_combined_rating=scoring_table.get(generate_random_rating())
+    random_combined_rating=scoring_table.get(generate_random_rating())+scoring_table.get(field)
     category=None
     for lower,upper,level in inherent_risk_rating:
          if lower<=random_combined_rating<=upper:
@@ -36,14 +36,21 @@ def init(init_param):
 
 # modelop.metrics
 def metrics(data: pd.DataFrame):
-    print("Running the metrics function",data.head())	
+    print("Running the metrics function") 
     config=load_config("./tables.json")
-    cat1=final_rating(config)
-    cat2=final_rating(config)
-    cat3=final_rating(config)
-    cat4=final_rating(config)
-    cat5=final_rating(config)
-    cat6=final_rating(config)
+    field1=data["Risk Factors"]["field1"]
+    field2=data["Risk Factors"]["field2"]
+    field3=data["Risk Factors"]["field3"]
+    field4=data["Risk Factors"]["field4"]
+
+
+
+    cat1=final_rating(config,field1)
+    cat2=final_rating(config,field2)
+    cat3=final_rating(config,field3)
+    cat4=final_rating(config,field4)
+    cat5=final_rating(config,field1)
+    cat6=final_rating(config,field2)
     final_result={
     "cat1":cat1,"cat2":cat3,"cat3":cat3,"cat4":cat4,"cat5":cat5,"cat6":cat6,
     "risk":[{"cat1":cat1}]
