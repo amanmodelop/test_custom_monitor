@@ -20,6 +20,7 @@ def load_config(file):
      
 def final_rating(config,field):
     scoring_table=config.get("scoring_table")
+    print(scoring_table)
     inherent_risk_rating=config.get("inherent_risk_rating")
     random_combined_rating=scoring_table.get(generate_random_rating())+scoring_table.get(field)
     category=None
