@@ -38,7 +38,7 @@ def init(init_param):
 def metrics(data: pd.DataFrame):
     print("Running the metrics function") 
     config=load_config("./tables.json")
-    print(data.columns)
+    print(data["Risk Factors"])
     field1=data["Risk Factors"]["field1"]
     field2=data["Risk Factors"]["field2"]
     field3=data["Risk Factors"]["field3"]
