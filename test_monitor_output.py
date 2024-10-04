@@ -38,12 +38,11 @@ def init(init_param):
 def metrics(data: pd.DataFrame):
     print("Running the metrics function") 
     config=load_config("./tables.json")
-    print(data["Risk Factors"])
-    field1=data["Risk Factors"]["field1"]
-    field2=data["Risk Factors"]["field2"]
-    field3=data["Risk Factors"]["field3"]
-    field4=data["Risk Factors"]["field4"]
-
+    print(data["Risk Factors"].get("field1"))
+    field1=data["Risk Factors"].get("field1")
+    field2=data["Risk Factors"].get("field2")
+    field3=data["Risk Factors"].get("field3")
+    field4=data["Risk Factors"].get("field4")
 
 
     cat1=final_rating(config,field1)
