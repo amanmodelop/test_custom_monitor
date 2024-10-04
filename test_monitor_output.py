@@ -36,7 +36,7 @@ def init(init_param):
 
 # modelop.metrics
 def metrics(data: pd.DataFrame):
-    print("Running the metrics function") 
+    print("Running the metrics function",data.head())	
     config=load_config("./tables.json")
     cat1=final_rating(config)
     cat2=final_rating(config)
