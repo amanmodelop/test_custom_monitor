@@ -20,7 +20,6 @@ def load_config(file):
      
 def final_rating(config,field):
     scoring_table=config.get("scoring_table")
-    print(scoring_table)
     inherent_risk_rating=config.get("inherent_risk_rating")
     random_combined_rating=scoring_table.get(generate_random_rating())+scoring_table.get(field)
     category=None
@@ -41,6 +40,8 @@ def metrics(data: pd.DataFrame):
     config=load_config("./tables.json")
     print(data["Risk Factors"].get("field1"))
     field1=data["Risk Factors"].get("field1")
+    print(field1)	
+	
     field2=data["Risk Factors"].get("field2")
     field3=data["Risk Factors"].get("field3")
     field4=data["Risk Factors"].get("field4")
