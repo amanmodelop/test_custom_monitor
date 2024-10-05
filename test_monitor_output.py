@@ -39,7 +39,7 @@ def metrics(data: pd.DataFrame):
     print("Running the metrics function") 
     config=load_config("./tables.json")
     print(data["Risk Factors"])
-    print(data["Risk Factors"].keys())
+    print(data.loc[::,'Risk Factors']
     field1=data.get("Risk Factors").get("field1")	
     field2=data.get("Risk Factors").get("field2")
     field3=data.get("Risk Factors").get("field3")
