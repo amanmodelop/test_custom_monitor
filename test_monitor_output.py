@@ -38,7 +38,7 @@ def init(init_param):
 def metrics(data: pd.DataFrame):
     print("Running the metrics function") 
     config=load_config("./tables.json")
-    print(data.columns,data.index,data["Risk Factors"],data["Risk Factors"].loc[0])
+    print("risk factors",data["Risk Factors"],"nested object at loc 0",data["Risk Factors"].loc[0],"field",data["Risk Factors"].loc[0].get("field1"))
     print(data['Risk Factors'].loc[1].get('field1'))
     field1=data.get("Risk Factors").get("field1")	
     field2=data.get("Risk Factors").get("field2")
