@@ -38,12 +38,12 @@ def init(init_param):
 def metrics(data: pd.DataFrame):
     print("Running the metrics function") 
     config=load_config("./tables.json")
-    print(data['Risk Factors'][0].get('What is the algorithmic complexity of the AI Product?'))
-    field1=data['Risk Factors'][0].get('What is the final state of the training data?')
-    field2=data['Risk Factors'][0].get('Select the highest data classification used to build/use the AIP (e.g., training, validation, input data).')
-    field3=data['Risk Factors'][0].get('What is the acceptable predictive accuracy of the AI Product relative to expected performance target(s)?')
-    field4=data['Risk Factors'][0].get('Is the data used in the AI Product (e.g., training, validation, input, grounding) subject to data use restrictions?')
-    field5=data['Risk Factors'][0].get('How controlled is the input data field?')
+    print(data['Risk Management'][0].get('What is the algorithmic complexity of the AI Product?'))
+    field1=data['Risk Management'][0].get('What is the final state of the training data?')
+    field2=data['Risk Management'][0].get('Select the highest data classification used to build/use the AIP (e.g., training, validation, input data).')
+    field3=data['Risk Management'][0].get('What is the acceptable predictive accuracy of the AI Product relative to expected performance target(s)?')
+    field4=data['Risk Management'][0].get('Is the data used in the AI Product (e.g., training, validation, input, grounding) subject to data use restrictions?')
+    field5=data['Risk Management'][0].get('How controlled is the input data field?')
 
     #other questions
     field6=data['Overview'][0].get('Select the intended use of the AI Product.')
