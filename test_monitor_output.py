@@ -38,19 +38,28 @@ def init(init_param):
 def metrics(data: pd.DataFrame):
     print("Running the metrics function") 
     config=load_config("./tables.json")
-    print(data['Risk Factors'][0].get('field1'))
-    field1=data['Risk Factors'][0].get('field1')
-    field2=data['Risk Factors'][0].get('field2')
-    field3=data['Risk Factors'][0].get('field3')
-    field4=data['Risk Factors'][0].get('field4')
+    print(data['Risk Factors'][0].get('What is the algorithmic complexity of the AI Product?'))
+    field1=data['Risk Factors'][0].get('What is the final state of the training data?')
+    field2=data['Risk Factors'][0].get('Select the highest data classification used to build/use the AIP (e.g., training, validation, input data).')
+    field3=data['Risk Factors'][0].get('What is the acceptable predictive accuracy of the AI Product relative to expected performance target(s)?')
+    field4=data['Risk Factors'][0].get('Is the data used in the AI Product (e.g., training, validation, input, grounding) subject to data use restrictions?')
+    field5=data['Risk Factors'][0].get('How controlled is the input data field?')
 
+    #other questions
+    field6=data['Overview'][0].get('Select the intended use of the AI Product.')
+    field7=data['Overview'][0].get('What is the opportunity cost of not having the AI Product?')
+    field8=data['Overview'][0].get('What is the impact to business operations if the AIP is not available for use?')
+    field9=data['Risk Management'][0].get("What is the potential impact to a data subject's (i.e., Employees, Customers, Consumers, Prospects, Applicants, etc.) legal rights (or similar) from an AIP decision?")
+
+
+    
 
     cat1=final_rating(config,field1)
     cat2=final_rating(config,field2)
     cat3=final_rating(config,field3)
     cat4=final_rating(config,field4)
-    cat5=final_rating(config,field1)
-    cat6=final_rating(config,field2)
+    cat5=final_rating(config,field5)
+    cat6=final_rating(config,field6)
     final_result={
     "cat1":cat1,"cat2":cat2,"cat3":cat3,"cat4":cat4,"cat5":cat5,"cat6":cat6,
     "risk":[{"cat1":cat1}]
