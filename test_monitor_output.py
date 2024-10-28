@@ -14,17 +14,18 @@ def map(val):
      map={"L":1,"M":2,"H":3}
      return map[val]
 
-
+def load_config(file):
+     with open(file,"r") as f:
+          return json.load(f)
      
 def final_rating(config,field):
-    scoring_table=config["scoring_table"][0]
-    inherent_risk_rating=config["inherent_risk_rating"][0]
-    print(inherent_risk_rating)
-    combined_rating=scoring_table.get(field)
-    print(combined_rating)
+    config=config[0]
+    scoring_table=config.get("scoring_table")
+    inherent_risk_rating=config.get("inherent_risk_rating")
+    random_combined_rating=scoring_table.get(field)
     category=None
     for lower,upper,level in inherent_risk_rating:
-         if lower<=combined_rating<=upper:
+         if lower<=random_combined_rating<=upper:
               category=level
               return category     
 
@@ -35,8 +36,11 @@ def init(init_param):
 
 
 # modelop.metrics
-def metrics(data: pd.DataFrame,config:pd.DataFrame):
+def metrics(data: pd.DataFrame):
     print("Running the metrics function") 
+    print(os.getcwd())
+    config=load_config("./tables.json")
+    print(config)
     field1=data['Risk Management'][0].get('What is the algorithmic complexity of the AI Product?').split()[0]
     field2=data['Risk Management'][0].get('What is the final state of the training data?').split()[0]
     field3=data['Risk Management'][0].get('Select the highest data classification used to build/use the AIP (e.g., training, validation, input data).').split()[0]
@@ -68,9 +72,7 @@ def metrics(data: pd.DataFrame,config:pd.DataFrame):
 
 def main():
     df=pd.read_json("pru_test_modelop.json")
-    config=pd.read_json("tables.json")
-    #df = pd.DataFrame.from_dict([data])
-    print(json.dumps(next(metrics(df,config)), indent=2))
+    print(json.dumps(next(metrics(df)), indent=2))
 
 
 if __name__ == '__main__':
