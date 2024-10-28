@@ -37,7 +37,6 @@ def init(init_param):
 # modelop.metrics
 def metrics(data: pd.DataFrame):
     print("Running the metrics function") 
-    config=load_config("./tables.json")
     print(data.head(),data.columns)
     field1=data['Risk Management'][0].get('What is the algorithmic complexity of the AI Product?').split()[0]
     field2=data['Risk Management'][0].get('What is the final state of the training data?').split()[0]
@@ -53,7 +52,8 @@ def metrics(data: pd.DataFrame):
     field10=data['Risk Management'][0].get("What is the potential impact to a data subject's (i.e., Employees, Customers, Consumers, Prospects, Applicants, etc.) legal rights (or similar) from an AIP decision?").split()[0]
 
 
-    
+    config=load_config("./tables.json")
+
 
     cat1=final_rating(config,field1)
     cat2=final_rating(config,field2)
