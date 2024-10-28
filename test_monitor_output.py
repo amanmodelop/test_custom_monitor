@@ -38,6 +38,7 @@ def init(init_param):
 def metrics(data: pd.DataFrame):
     print("Running the metrics function") 
     config=load_config("./tables.json")
+    print(data.head(),data.columns)
     field1=data['Risk Management'][0].get('What is the algorithmic complexity of the AI Product?').split()[0]
     field2=data['Risk Management'][0].get('What is the final state of the training data?').split()[0]
     field3=data['Risk Management'][0].get('Select the highest data classification used to build/use the AIP (e.g., training, validation, input data).').split()[0]
