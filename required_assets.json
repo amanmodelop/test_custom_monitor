@@ -1,0 +1,17 @@
+[
+    {
+        "usage": "INPUT_ASSET",
+        "metaData": {
+            "description": "use case metadata"
+        }
+    },
+    {
+        "usage": "INPUT_ASSET",
+        "assetRole": "REQUIRED_ASSETS",
+        "name": ".+\\.json",
+        "filename": "tables.json",
+        "metaData": {
+            "description": "table to be used"
+        }
+    }
+]
