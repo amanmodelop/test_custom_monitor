@@ -6,7 +6,7 @@
         }
     },
     {
-        "usage": "INPUT_ASSET",
+        "usage": "ADDITIONAL_ASSET",
         "assetRole": "REQUIRED_ASSETS",
         "name": ".+\\.json",
         "filename": "tables.json",
