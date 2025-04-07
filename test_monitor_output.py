@@ -57,14 +57,14 @@ def metrics(data: pd.DataFrame):
 
     
 
-    cat1=final_rating(config,field1)
+    IRS=final_rating(config,field1)
     cat2=final_rating(config,field2)
     cat3=final_rating(config,field3)
     cat4=final_rating(config,field4)
     cat5=final_rating(config,field5)
     cat6=final_rating(config,field6)
     final_result={
-    "cat1":cat1,"cat2":cat2,"cat3":cat3,"cat4":cat4,"cat5":cat5,"cat6":cat6,
+    "IRS":IRS,"cat2":cat2,"cat3":cat3,"cat4":cat4,"cat5":cat5,"cat6":cat6,
     "risk":[{"cat1":cat1}]
     }
     yield final_result
